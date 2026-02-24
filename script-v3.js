@@ -206,18 +206,34 @@
 
 makeSolved();
 
-// Always start a fresh shuffled game on load
-(function boot(){
+// init (guaranteed unsolved start)
+makeSolved();
+
+function startShuffled() {
+  // start from solved order
   tiles = [...solved];
 
-  // Shuffle multiple times to guarantee it's mixed
-  for (let k = 0; k < 3; k++) shuffle();
+  // shuffle a bunch of times
+  for (let i = 0; i < 25; i++) shuffle();
 
-  // If it somehow ends up solved, shuffle again
-  if (isSolved()) shuffle();
+  // GUARANTEE it's not solved (even if RNG is unlucky)
+  if (isSolved()) {
+    [tiles[0], tiles[1]] = [tiles[1], tiles[0]];
+  }
 
   resetStats();
   winOverlay.hidden = true;
   render();
-})();
-})();
+}
+
+// Start shuffled every time the page loads
+window.addEventListener("load", startShuffled);
+
+// Make the Shuffle button always start a brand new shuffled game
+shuffleBtn.addEventListener("click", startShuffled);
+
+// Play again also starts a fresh shuffle
+playAgainBtn.addEventListener("click", () => {
+  winOverlay.hidden = true;
+  startShuffled();
+});
