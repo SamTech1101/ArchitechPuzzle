@@ -3,18 +3,19 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>4×4 Photo Puzzle</title>
+  <title>Architect + AV Conference Room Puzzle (4×4)</title>
+  <meta name="description" content="Interactive 4×4 architectural conference room puzzle featuring integrated Audio Visual (AV) design. Drag tiles to swap. Track time and moves." />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <main class="wrap">
     <header class="top">
       <div>
-        <h1>4×4 Photo Puzzle</h1>
-        <p class="sub">Drag tiles to swap them. Solve the image as fast as you can.</p>
+        <h1>Architect + AV Conference Room Puzzle (4×4)</h1>
+        <p class="sub">Drag (or tap) tiles to swap. Solve the room layout as fast as you can.</p>
       </div>
 
-      <div class="stats">
+      <div class="stats" aria-label="Stats">
         <div class="stat"><span class="label">Time</span><span id="time" class="value">00:00</span></div>
         <div class="stat"><span class="label">Moves</span><span id="moves" class="value">0</span></div>
       </div>
@@ -22,13 +23,15 @@
 
     <section class="card">
       <div class="controls">
-        <button id="shuffleBtn" class="btn primary">Shuffle</button>
+        <button id="shuffleBtn" class="btn primary">New Shuffle</button>
         <button id="resetBtn" class="btn">Reset</button>
         <button id="previewBtn" class="btn">Preview</button>
+
         <label class="toggle">
           <input id="gridToggle" type="checkbox" checked />
           <span>Grid lines</span>
         </label>
+
         <label class="toggle">
           <input id="numbersToggle" type="checkbox" />
           <span>Tile numbers</span>
@@ -36,7 +39,7 @@
       </div>
 
       <div class="boardWrap">
-        <div id="board" class="board" aria-label="Puzzle board"></div>
+        <div id="board" class="board grid" aria-label="Puzzle board"></div>
 
         <div id="win" class="win" hidden>
           <div class="winBox">
@@ -46,24 +49,24 @@
               <button id="playAgainBtn" class="btn primary">Play again</button>
               <button id="shareBtn" class="btn">Copy share text</button>
             </div>
-            <p class="hint">Tip: Post your time + moves on LinkedIn and challenge others.</p>
+            <p class="hint">Tip: Post your time + moves on LinkedIn and challenge architects & AV pros.</p>
           </div>
         </div>
       </div>
     </section>
 
     <footer class="foot">
-      <span>Made for LinkedIn • Works on mobile & desktop</span>
+      <span>Architects • Audio Visual • Conference Room • Workspace Design</span>
     </footer>
   </main>
 
   <div id="preview" class="preview" hidden>
     <div class="previewInner">
       <button id="closePreview" class="btn close">Close</button>
-      <img src="multiclass_conference.jpg" alt="Puzzle preview image" />
+      <img src="conference_room_av.jpg" alt="Preview: conference room with integrated AV" />
     </div>
   </div>
 
-  <script src="script-v3.js"></script>
+  <script src="game-v4.js"></script>
 </body>
 </html>
