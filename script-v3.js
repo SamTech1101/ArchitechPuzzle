@@ -211,15 +211,50 @@
   }
 
   // Buttons
+  resetBtn.addEventListener('click', () => resetToSolved());
+
+  previewBtn.addEventListener('click', () => previewModal.hidden = false);
+  closePreviewBtn.addEventListener('click', () => previewModal.hidden = true);
+  previewModal.addEventListener('click', (e) => { if (e.target === previewModal) previewModal.hidden = true; });
+
+  gridToggle.addEventListener('change', () => render());
+  numbersToggle.addEventListener('change', () => render());
+
+  shareBtn.addEventListener('click', async () => {
+    const text = `I solved the 4×4 photo puzzle in ${fmt(elapsedMs)} with ${moves} moves. Can you beat that?`;
+    try{
+      await navigator.clipboard.writeText(text);
+      shareBtn.textContent = 'Copied!';
+      setTimeout(() => shareBtn.textContent = 'Copy share text', 1200);
+    }catch{
+      alert(text);
+    }
+  });
+
+  makeSolved();
+
+  function startShuffled() {
+    tiles = [...solved];
+
+    for (let i = 0; i < 25; i++) shuffle();
+
+    if (isSolved()) {
+      [tiles[0], tiles[1]] = [tiles[1], tiles[0]];
+    }
+
+    resetStats();
+    winOverlay.hidden = true;
+    render();
+  }
+
   shuffleBtn.addEventListener("click", startShuffled);
+
   playAgainBtn.addEventListener("click", () => {
     winOverlay.hidden = true;
     startShuffled();
   });
 
-  // Start shuffled immediately (and also after full load)
+  // start scrambled immediately
   startShuffled();
-  window.addEventListener("load", startShuffled);
 
 })();
- 
