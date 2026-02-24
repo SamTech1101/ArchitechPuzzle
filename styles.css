@@ -1,0 +1,136 @@
+/* Minimal, LinkedIn-friendly styling */
+:root{
+  --bg:#0b0c10;
+  --card:#12131a;
+  --text:#e9e9ee;
+  --muted:#a7a7b5;
+  --line:rgba(255,255,255,.08);
+  --btn:#1c1d27;
+  --btn2:#2a2c3a;
+  --accent:#4f7cff;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+  background: radial-gradient(1200px 800px at 20% 10%, rgba(79,124,255,.18), transparent 55%),
+              radial-gradient(900px 700px at 80% 30%, rgba(61,220,151,.12), transparent 60%),
+              var(--bg);
+  color:var(--text);
+}
+.wrap{max-width:980px;margin:0 auto;padding:22px}
+.top{display:flex;gap:16px;align-items:flex-start;justify-content:space-between;flex-wrap:wrap}
+h1{margin:0;font-size:28px;letter-spacing:.2px}
+.sub{margin:6px 0 0;color:var(--muted)}
+.stats{display:flex;gap:10px}
+.stat{
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.03);
+  padding:10px 12px;
+  border-radius:14px;
+  min-width:120px;
+}
+.label{display:block;font-size:12px;color:var(--muted)}
+.value{display:block;font-size:18px;margin-top:2px}
+.card{
+  margin-top:16px;
+  border:1px solid var(--line);
+  background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
+  border-radius:18px;
+  padding:14px;
+}
+.controls{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  align-items:center;
+  margin-bottom:12px;
+}
+.btn{
+  appearance:none;
+  border:1px solid var(--line);
+  background:var(--btn);
+  color:var(--text);
+  padding:10px 12px;
+  border-radius:14px;
+  cursor:pointer;
+  font-weight:600;
+}
+.btn:hover{background:var(--btn2)}
+.btn.primary{
+  background:linear-gradient(180deg, rgba(79,124,255,.95), rgba(79,124,255,.75));
+  border-color:rgba(79,124,255,.35);
+}
+.btn.primary:hover{filter:brightness(1.05)}
+.toggle{display:flex;gap:8px;align-items:center;color:var(--muted);user-select:none}
+.toggle input{transform:translateY(1px)}
+.boardWrap{position:relative}
+.board{
+  width:min(86vw, 620px);
+  aspect-ratio: 4 / 1;
+  max-height: 360px;
+  margin: 0 auto;
+  display:grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  border-radius:16px;
+  overflow:hidden;
+  border:1px solid var(--line);
+  background:#0f1016;
+}
+.tile{
+  position:relative;
+  background-image:url('multiclass_conference.jpg');
+  background-repeat:no-repeat;
+  background-size: 400% 400%;
+  cursor:grab;
+}
+.tile:active{cursor:grabbing}
+.board.grid .tile{ outline:1px solid rgba(255,255,255,.10); }
+.tile .num{
+  position:absolute;
+  top:8px; left:8px;
+  width:28px; height:28px;
+  border-radius:10px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:12px;
+  background:rgba(0,0,0,.45);
+  border:1px solid rgba(255,255,255,.15);
+  color:rgba(255,255,255,.9);
+}
+.win{
+  position:absolute; inset:0;
+  display:flex; align-items:center; justify-content:center;
+  backdrop-filter: blur(8px);
+  background: rgba(0,0,0,.55);
+}
+.winBox{
+  width:min(92%, 420px);
+  border-radius:18px;
+  border:1px solid rgba(255,255,255,.12);
+  background: rgba(18,19,26,.92);
+  padding:18px 16px;
+  text-align:center;
+  box-shadow:0 30px 80px rgba(0,0,0,.45);
+}
+.winBox h2{margin:0 0 6px}
+.winBtns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+.hint{color:var(--muted);margin:10px 0 0;font-size:13px}
+.foot{margin-top:12px;color:var(--muted);font-size:12px;text-align:center}
+.preview{
+  position:fixed; inset:0;
+  background:rgba(0,0,0,.75);
+  display:flex; align-items:center; justify-content:center;
+  padding:18px;
+}
+.previewInner{
+  width:min(1100px, 96vw);
+  border-radius:18px;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.12);
+  background:#0f1016;
+  position:relative;
+}
+.previewInner img{width:100%;height:auto;display:block}
+.btn.close{ position:absolute; top:12px; right:12px; }
