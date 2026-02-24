@@ -204,8 +204,20 @@
     }
   });
 
-  makeSolved();
-  resetToSolved();
-  shuffle();
+makeSolved();
+
+// Always start a fresh shuffled game on load
+(function boot(){
+  tiles = [...solved];
+
+  // Shuffle multiple times to guarantee it's mixed
+  for (let k = 0; k < 3; k++) shuffle();
+
+  // If it somehow ends up solved, shuffle again
+  if (isSolved()) shuffle();
+
+  resetStats();
+  winOverlay.hidden = true;
   render();
+})();
 })();
