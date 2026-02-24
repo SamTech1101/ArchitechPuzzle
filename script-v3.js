@@ -174,14 +174,6 @@
     hideWin();
     render();
   }
-
-  function newGame(){
-    resetToSolved();
-    shuffle();
-    render();
-  }
-
-  shuffleBtn.addEventListener('click', () => newGame());
   resetBtn.addEventListener('click', () => resetToSolved());
 
   previewBtn.addEventListener('click', () => previewModal.hidden = false);
@@ -190,8 +182,6 @@
 
   gridToggle.addEventListener('change', () => render());
   numbersToggle.addEventListener('change', () => render());
-
-  playAgainBtn.addEventListener('click', () => { hideWin(); newGame(); });
 
   shareBtn.addEventListener('click', async () => {
     const text = `I solved the 4×4 photo puzzle in ${fmt(elapsedMs)} with ${moves} moves. Can you beat that?`;
@@ -204,36 +194,32 @@
     }
   });
 
-makeSolved();
+  makeSolved();
 
-// init (guaranteed unsolved start)
-makeSolved();
+  function startShuffled() {
+    tiles = [...solved];
 
-function startShuffled() {
-  // start from solved order
-  tiles = [...solved];
+    for (let i = 0; i < 25; i++) shuffle();
 
-  // shuffle a bunch of times
-  for (let i = 0; i < 25; i++) shuffle();
+    if (isSolved()) {
+      [tiles[0], tiles[1]] = [tiles[1], tiles[0]];
+    }
 
-  // GUARANTEE it's not solved (even if RNG is unlucky)
-  if (isSolved()) {
-    [tiles[0], tiles[1]] = [tiles[1], tiles[0]];
+    resetStats();
+    winOverlay.hidden = true;
+    render();
   }
 
-  resetStats();
-  winOverlay.hidden = true;
-  render();
-}
+  // Buttons
+  shuffleBtn.addEventListener("click", startShuffled);
+  playAgainBtn.addEventListener("click", () => {
+    winOverlay.hidden = true;
+    startShuffled();
+  });
 
-// Start shuffled every time the page loads
-window.addEventListener("load", startShuffled);
-
-// Make the Shuffle button always start a brand new shuffled game
-shuffleBtn.addEventListener("click", startShuffled);
-
-// Play again also starts a fresh shuffle
-playAgainBtn.addEventListener("click", () => {
-  winOverlay.hidden = true;
+  // Start shuffled immediately (and also after full load)
   startShuffled();
-});
+  window.addEventListener("load", startShuffled);
+
+})();
+ 
