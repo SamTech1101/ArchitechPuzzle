@@ -124,13 +124,18 @@ h1{margin:0;font-size:26px;letter-spacing:.2px}
   display:flex; align-items:center; justify-content:center;
   padding:18px;
 }
-.previewInner{
-  width:min(1200px, 96vw);
-  border-radius:18px;
-  overflow:hidden;
-  border:1px solid rgba(255,255,255,.12);
-  background:#0f1016;
-  position:relative;
+.preview{
+  position:fixed; inset:0;
+  background:rgba(0,0,0,.75);
+  display:none;                 /* ✅ IMPORTANT */
+  align-items:center;
+  justify-content:center;
+  padding:18px;
+}
+
+/* ✅ Show only when NOT hidden */
+.preview:not([hidden]){
+  display:flex;
 }
 .previewInner img{width:100%;height:auto;display:block}
 .btn.close{ position:absolute; top:12px; right:12px; }
