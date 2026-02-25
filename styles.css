@@ -159,3 +159,12 @@ h1{margin:0;font-size:26px;letter-spacing:.2px}
   from{ transform: translateY(10px) scale(.98); opacity: 0; }
   to{ transform: translateY(0) scale(1); opacity: 1; }
 }
+.logoOverlay{
+  position:absolute;
+  bottom:14px;
+  right:14px;
+  width:130px;
+  opacity:0.9;
+  pointer-events:none;
+  z-index:10;
+}
