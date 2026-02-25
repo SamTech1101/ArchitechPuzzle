@@ -148,8 +148,11 @@ h1{margin:0;font-size:26px;letter-spacing:.2px}
 .previewInner img{width:100%;height:auto;display:block}
 .btn.close{ position:absolute; top:12px; right:12px; }
 /* --- Solved animation --- */
-.winBox{
-  animation: popIn .22s ease-out both;
+.winBox { animation: popIn .22s ease-out both; }
+
+@keyframes popIn{
+  from{ transform: translateY(10px) scale(.98); opacity: 0; }
+  to{ transform: translateY(0) scale(1); opacity: 1; }
 }
 
 @keyframes popIn{
