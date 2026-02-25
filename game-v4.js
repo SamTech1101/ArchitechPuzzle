@@ -70,13 +70,19 @@
     return true;
   }
 
-  function checkWin(){
-    if (!isSolved()) return;
-    stopTimer();
-    winTime.textContent = `Time: ${fmt(elapsedMs)}`;
-    winMoves.textContent = `Moves: ${moves}`;
-    winOverlay.hidden = false;
-  }
+ function checkWin(){
+  if (!isSolved()) return;
+  stopTimer();
+
+  winTime.textContent = `Time: ${fmt(elapsedMs)}`;
+  winMoves.textContent = `Moves: ${moves}`;
+  winOverlay.hidden = false;
+
+  const box = winOverlay.querySelector('.winBox');
+  box.style.animation = 'none';
+  box.offsetHeight;
+  box.style.animation = '';
+}
 
   // Tap-to-swap support (mobile)
   let selectedPos = null;
