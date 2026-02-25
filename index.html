@@ -4,20 +4,27 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
 
- <title>🎮 Play: Architect + AV Conference Room Puzzle </title>
+  <title>🎮 Play: Architect + AV Conference Room Puzzle</title>
 
   <meta name="description"
         content="Interactive 4×4 architectural conference room puzzle featuring integrated Audio Visual (AV) design. Drag tiles to swap. Track time and moves." />
 
-  <!-- ✅ ADD THIS PART BELOW -->
- <meta property="og:title" content="🎮 Play: Architect + AV Conference Room Puzzle" />
-  <meta property="og:description" content="Interactive 4×4 puzzle showcasing conference room AV integration." />
+  <!-- LinkedIn Preview -->
+  <meta property="og:title" content="🎮 Play: Architect + AV Conference Room Puzzle" />
+  <meta property="og:description" content="Interactive 4×4 puzzle showcasing conference room AV integration. Drag tiles to swap and beat the clock." />
   <meta property="og:image" content="https://samtech1101.github.io/ArchitechPuzzle/puzzle_preview.jpg" />
   <meta property="og:url" content="https://samtech1101.github.io/ArchitechPuzzle/" />
   <meta property="og:type" content="website" />
 
-  <link rel="stylesheet" href="styles.css?v=8" />
+  <!-- Twitter (optional but good practice) -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="🎮 Play: Architect + AV Conference Room Puzzle" />
+  <meta name="twitter:description" content="Interactive 4×4 puzzle showcasing conference room AV integration." />
+  <meta name="twitter:image" content="https://samtech1101.github.io/ArchitechPuzzle/puzzle_preview.jpg" />
+
+  <link rel="stylesheet" href="styles.css?v=9" />
 </head>
+
 <body>
   <main class="wrap">
     <header class="top">
@@ -27,8 +34,14 @@
       </div>
 
       <div class="stats" aria-label="Stats">
-        <div class="stat"><span class="label">Time</span><span id="time" class="value">00:00</span></div>
-        <div class="stat"><span class="label">Moves</span><span id="moves" class="value">0</span></div>
+        <div class="stat">
+          <span class="label">Time</span>
+          <span id="time" class="value">00:00</span>
+        </div>
+        <div class="stat">
+          <span class="label">Moves</span>
+          <span id="moves" class="value">0</span>
+        </div>
       </div>
     </header>
 
@@ -56,13 +69,20 @@
           <div class="winBox">
             <h2>🎉 Solved!</h2>
             <p><strong id="winTime"></strong> • <strong id="winMoves"></strong></p>
+
             <div class="winBtns">
               <button id="playAgainBtn" class="btn primary">Play again</button>
               <button id="shareBtn" class="btn">Copy share text</button>
             </div>
-            <p class="hint">Tip: Post your time + moves on LinkedIn and challenge architects & AV pros.</p>
+
+            <p class="hint">
+              Tip: Post your time + moves on LinkedIn and challenge architects & AV pros.
+            </p>
           </div>
         </div>
+
+        <!-- ✅ Company Logo Overlay -->
+        <img src="logo.png" class="logoOverlay" alt="Company Logo" />
       </div>
     </section>
 
